@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<html><head>
+  <title>Power On</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="shortcut icon" href="Icon.png">
+  <script src="js/ButtonSounds.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #000;
+    }
+    
+    .hiddenUntilClick {
+      display: none;
+    }
+    
+    .hideOnClick {
+      position: absolute;
+      display: grid;
+    }
+
+    .animating {
+      opacity: 0;
+      animation: fadeInOut 2s ease-in-out 1s forwards;
+      width: 35vw;
+      height: auto;
+    }
+
+    @keyframes fadeInOut {
+      0% {
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      80% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+  </style>
+  <script>
+    function wait(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function powerOn() {
+      const button = document.querySelector(".hideOnClick");
+      button.style.display = "none";
+      
+      const p = document.querySelector("p");
+      p.style.display = "none";
+
+      const audio = document.querySelector("audio");
+      audio.play();
+
+      const img = document.querySelector(".hiddenUntilClick");
+      img.classList.remove("hiddenUntilClick");
+      img.classList.add("animating");
+
+      const imgAnimating = document.querySelector(".animating");
+      imgAnimating.style.animationPlayState = "running";
+
+      await wait(3200);
+      window.location.href = "PageStyleGuide.html";
+    }
+  </script>
+</head>
+<body>
+  <img class="hiddenUntilClick" src="images\logos\Smasnug.png" alt="Samsung Logo"> <!-- Logo. Change to whatever logo you'd like to display. -->
+  <audio src="audio\modem.mp3"></audio> <!-- Audio to play upon "powering on". -->
+  <audio id="submitSound" src="audio/submitClick.mp3" preload="auto"></audio>
+  <input class="hideOnClick submit" type="submit" value="Power On" onclick="powerOn()"></input>
+  <p class="hideOnClick" style="margin-top: 15vh;">This is needed because browsers require interaction before audio is played.</p>
+</body>
+</html>

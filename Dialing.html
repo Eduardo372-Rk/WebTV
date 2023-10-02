@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Connecting</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/Dialing.css"/>
+  <link rel="shortcut icon" href="Icon.png">
+  <script src="js/ButtonSounds.js"></script>
+  <script src="js/Dialing.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div id="city"></div>
+  <div id="progressbar-container">
+	<span id="progressbar-message">Dialing toll free</span><br>
+    <progress id="progressbar" max="100" value="20"></progress>
+	<input type="submit" class="submit" id="skipDialing" value="Skip Dialing" onClick="skipDialing()"></input>
+  </div>
+  
+  <audio id="dialing-music" autoplay loop preload="auto">
+    <source src="audio/dialing.mp3" type="audio/mpeg">
+    Your browser does not support audio, so the dialing music will not play.
+  </audio>
+<audio id="submitSound" src="audio/submitClick.mp3" preload="auto"></audio>
+</body>
+</html>
